@@ -7,13 +7,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.myquiz.quizapp.presentation.home.HomeScreen
+import com.myquiz.quizapp.presentation.home.HomeScreenViewModel
 import com.myquiz.quizapp.ui.theme.QuizAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +33,14 @@ class MainActivity : ComponentActivity() {
                         .background(color = colorResource(id = R.color.mid_night_blue)),
                     contentAlignment = Alignment.Center
                 ) {
-                HomeScreen()
+                    val viewModel : HomeScreenViewModel = hiltViewModel()
+                    val state by viewModel.homeState.collectAsState()
+                    HomeScreen(
+                        state = state,
+                        event = viewModel::onEvent // Passes the onEvent function to handle events
+                    )
                 }
             }
         }
     }
 }
-
