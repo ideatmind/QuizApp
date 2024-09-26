@@ -16,6 +16,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.myquiz.quizapp.presentation.home.HomeScreen
 import com.myquiz.quizapp.presentation.home.HomeScreenViewModel
+import com.myquiz.quizapp.presentation.navgraph.SetNavGraph
 import com.myquiz.quizapp.ui.theme.QuizAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,12 +34,7 @@ class MainActivity : ComponentActivity() {
                         .background(color = colorResource(id = R.color.mid_night_blue)),
                     contentAlignment = Alignment.Center
                 ) {
-                    val viewModel : HomeScreenViewModel = hiltViewModel()
-                    val state by viewModel.homeState.collectAsState()
-                    HomeScreen(
-                        state = state,
-                        event = viewModel::onEvent // Passes the onEvent function to handle events
-                    )
+                    SetNavGraph()
                 }
             }
         }

@@ -10,7 +10,7 @@ object Dimens {
 
     val HomeTopBoxHeight = 150.dp
 
-    val smallPadding = 15.dp
+    val SmallPadding = 15.dp
     val MediumPadding = 25.dp
     val LargePadding = 60.dp
 

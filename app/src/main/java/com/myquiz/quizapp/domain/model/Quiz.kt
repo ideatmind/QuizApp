@@ -1,6 +1,6 @@
-package com.myquiz.quizapp.data
+package com.myquiz.quizapp.domain.model
 
-data class ResultX(
+data class Quiz(
     val category: String,
     val correct_answer: String,
     val difficulty: String,

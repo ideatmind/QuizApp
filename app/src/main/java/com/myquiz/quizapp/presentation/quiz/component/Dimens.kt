@@ -1,9 +1,13 @@
 package com.myquiz.quizapp.presentation.quiz.component
 
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 object Dimens {
 
+    val LargeTextSize = 20.sp
+    val MediumTextSize = 16.sp
+    val SmallTextSize = 8.sp
     val HomeTopBoxHeight = 150.dp
 
     val VerySmallPadding = 10.dp
